@@ -110,6 +110,9 @@ plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jekyll-paginate
+  - jekyll-gist
+   - jemoji
+  - jekyll-github-metadata # if not work delete
 
 # Exclude these files from your production _site
 exclude:
