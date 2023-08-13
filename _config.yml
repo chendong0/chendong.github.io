@@ -61,8 +61,9 @@ footer-text: Copyright (c) 2023 CHEN
 disqus: # fromendworld
 
 # Gitalk
+# https://github.com/settings/applications/2289459
 gitalk:
-  clientID: 40fea0e426cf5cd98b3c
+  clientID: 6c20655d5568d41f15ff
   clientSecret: ce0cf82947e135efea89266208d6a860af9f3c64
   repo: https://chendong0.github.io
   owner: chendong0
