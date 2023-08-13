@@ -64,7 +64,7 @@ disqus: # fromendworld
 # https://github.com/settings/applications/2289459
 gitalk:
   clientID: 6c20655d5568d41f15ff
-  clientSecret: ce0cf82947e135efea89266208d6a860af9f3c64
+  clientSecret: b10ef0f9da6c4e3ac85b004bc616b2245d18ac44
   repo: https://chendong0.github.io
   owner: chendong0
 
