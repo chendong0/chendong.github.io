@@ -1,0 +1,43 @@
+import pkuseg
+import os
+import time
+import docx
+def main():
+    start_time = time.time()
+    # Define input and output file paths
+    input_file_path = r"/home/chen/Downloads/DATA20231211/重要一课.docx"
+    output_file_path = r"/home/chen/Downloads/DATA20231211/重要一课PKUSEG20231231.docx"
+    
+    # Read the contents of a Word document
+    doc = docx.Document(input_file_path)
+    text = ""
+    for para in doc.paragraphs:
+        text += para.text
+        
+    # Make part-of-speech tagging in Word documents
+    seg = pkuseg.pkuseg(postag=True)
+    words =seg.cut(text)
+    marked_words = []
+    for word, pos in words:
+        if pos.startswith('n') or pos.startswith('a') or pos.startswith('v') or pos.startswith('p') or \
+           pos.startswith('d') or pos.startswith('i') or pos.startswith('t') or pos.startswith('c'):
+            marked_words.append(word + '/' + pos)
+        else:
+            marked_words.append(word)
+            
+    marked_text = ''.join(marked_words)
+    
+    end_time = time.time()
+    total_time = end_time - start_time
+    print("Total execution time:", total_time, "seconds")
+    # write Word documents
+    doc = docx.Document()
+    doc.add_paragraph(marked_text)
+    doc.save(output_file_path)
+   
+    
+print("Done20231228-3")
+        
+if __name__ == "__main__":
+    main()
+        
