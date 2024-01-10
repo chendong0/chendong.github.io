@@ -1,0 +1,52 @@
+import jieba.posseg as pseg
+
+# Define input and output file paths
+input_file_path = "/home/chen/Downloads/DATA20231211/20231212.txt"
+output_file_path = "/home/chen/Downloads/DATA20231211/202312123jieba.txt"
+
+# Use jieba.posseg to get words and their POS tags
+words = pseg.cut(open(input_file_path, "r", encoding='utf-8').read())
+
+# Separate dictionaries for nouns, adjectives, and verbs
+noun_counts = {}
+adj_counts = {}
+verb_counts = {}
+
+# Start the timer
+start_time = time.time()
+
+# Loop through each word and its POS tag
+for word, pos in words:
+    if len(word) == 1:
+        continue
+    elif pos == 'n':
+        noun_counts[word] = noun_counts.get(word, 0) + 1
+    elif pos == 'a':
+        adj_counts[word] = adj_counts.get(word, 0) + 1
+    elif pos == 'v':
+        verb_counts[word] = verb_counts.get(word,0) + 1
+
+# Sort the counts for each POS in descending order
+sorted_nouns = sorted(noun_counts.items(), key=lambda item: item[1], reverse=True)
+sorted_adjectives = sorted(adj_counts.items(), key=lambda item:item[1], reverse=True)
+sorted_verbs = sorted(verb_counts.items(), key=lambda item:item[1], reverse=True)
+
+# Save the sorted results to a single text file
+with open(output_file_path, "w", encoding='utf-8' ) as f:
+    for word, pos in pseg.cut(open(input_file_path, "r", encoding='utf-8').read()):
+        if pos != 'x':
+            f.write(f"{word}/{pos} ")
+    f.write("\n\nNouns:\n")
+    for word, count in sorted_nouns:
+        f.write(f"{word}: {count}\n")
+    f.write("\nAdjectives:\n")
+    for word, count in sorted_adjectives:
+        f.write(f"{word}: {count}\n")
+    f.write("\nVerbs:\n")
+    for word, count in sorted_verbs:
+        f.write(f"{word}: {count}\n")
+
+# End the timer
+end_time = time.time()
+time_taken = end_time - start_time
+print(f"Time taken to execute the code: {time_taken:.2f} seconds")
