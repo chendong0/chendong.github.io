@@ -71,6 +71,13 @@ lambda x: x[1] is an anonymous (lambda) function in Python.
 
 x is the input argument (a tuple in this case).
 x[1] extracts the second element of the tuple
+在 Python 中，lambda 关键字可以用来创建匿名函数，即不需要使用 def 语句定义的函数。匿名函数通常用于简洁表达式，尤其是在其他函数或方法中。
+
+在 sorted_adverb = sorted(adj_counts.items(), key=lambda x:x[1], reverse=True) 中，lambda x:x[1] 是一个匿名函数，它接受一个 x 参数，
+并返回 x 的第二个元素。在本例中，x 是 adj_counts 字典的键值对。因此，lambda x:x[1] 实际上是说，对于每个键值对 x，返回其第二个元素，即计数。
+
+sorted() 函数用于对列表或可迭代对象进行排序。在本例中，它用于对 adj_counts.items() 列表进行排序。key 参数指定排序的键。在本例中，我们指定使用 lambda x:x[1] 函数来确定排序顺序。因此，sorted_adverb 列表将按计数从高到低进行排序。
+在 adj_counts 字典中，每个键值对都由两个元素组成：一个是形容词，另一个是形容词出现的次数。因此，x[1] 返回的第二个元素就是形容词出现的次数，即计数。
 
 '''
 sorted_adj = sorted(adj_counts.items(), key=lambda x:x[1], reverse=True)
