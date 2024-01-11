@@ -133,3 +133,4 @@ end_time = time.time()
 time_taken = end_time - start_time
 
 print(f"输出文件已保存到:{output_file_path}")
+print(time_taken)
